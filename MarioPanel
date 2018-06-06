@@ -1,0 +1,11 @@
+import javax.swing.JPanel;
+import java.awt.Dimension;
+public class MarioPanel extends JPanel {
+	public static final long serialVersionUID = 1L;
+	public static final int WIDTH = 800;
+	public static final int HEIGHT = 600;
+	public MarioPanel() {
+			setPreferredSize(new Dimension(WIDTH, HEIGHT));
+	}
+
+}
