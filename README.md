@@ -1,2 +1,2 @@
 # SuperMario
-A partial remake if Super Mario World for a school project
+A partial remake of Super Mario World for a school project
