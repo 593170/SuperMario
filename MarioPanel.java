@@ -9,11 +9,13 @@ public class MarioPanel extends JPanel implements Runnable, KeyListener{
 	public static final int HEIGHT = 600;
 	public MarioPanel() {
 			setPreferredSize(new Dimension(WIDTH, HEIGHT));
+			start();
 	}
 	private int fps = 60;
 	private long targetTime = 1000 / fps;
 	private Thread thread;
 	private boolean isRunning = false;
+	private gameStateManager gsm;
 	private void start() {
 		isRunning = true;
 		thread = new Thread(this);
@@ -21,49 +23,36 @@ public class MarioPanel extends JPanel implements Runnable, KeyListener{
 	}
 	public void run() {
 		long start, elapsed, wait;
+		gsm = new gameStateManager();
 		while(isRunning) {
 			start = System.nanoTime();
 			tick();
 			repaint();
 			elapsed = System.nanoTime() - start;
-			wait = targetTime - elapsed / 1000000;
-			
+			wait = targetTime - elapsed / 1000000;	
 			if (wait <= 0) {
 				wait = 5;
 			}
-			
 			try {
 				Thread.sleep(wait);
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-			
 		}
-	}
-	
+		}
 	public void tick() {
-		System.out.println("Running");
+		gsm.tick();
 	}
-	
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.drawRect(10, 10, 10, 50);
-		
-		g.drawRect(500, 10, 10, 50);
-		g.drawRect(550, 10, 10, 50);
-		
-		g.drawRect(10, 350, 10, 50);
-		g.drawRect(60, 350, 10, 50);
-		
-		g.drawRect(500, 350, 10, 50);
-		g.drawRect(550, 380, 50, 10);
+	public void paintComponent(Graphics z) {
+		super.paintComponent(z);
+		z.clearRect(0, 0, WIDTH, HEIGHT);
+		gsm.draw(z);
 	}
-	
-	public void keyPressed(KeyEvent arg0) {
-		
+	public void keyPressed(KeyEvent e) {
+		gsm.keyPressed(e.getKeyCode());
 	}
 	public void keyReleased(KeyEvent e) {	
-		
+		gsm.keyReleased(e.getKeyCode());
 	}
 	public void keyTyped(KeyEvent e) {
 		
