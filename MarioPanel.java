@@ -10,6 +10,8 @@ public class MarioPanel extends JPanel implements Runnable, KeyListener{
 	public MarioPanel() {
 			setPreferredSize(new Dimension(WIDTH, HEIGHT));
 			start();
+			addKeyListener(this);
+			setFocusable(true);	
 	}
 	private int fps = 60;
 	private long targetTime = 1000 / fps;
