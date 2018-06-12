@@ -1,7 +1,7 @@
 import java.awt.Graphics;
 public abstract class gameState {
-	protected gameStateManager gsm;
-	protected gameState(gameStateManager gsm) {
+	public gameStateManager gsm;
+	public gameState(gameStateManager gsm) {
 		this.gsm = gsm;
 		init();
 	}
