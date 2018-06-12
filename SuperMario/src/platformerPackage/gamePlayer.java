@@ -75,9 +75,18 @@ public class gamePlayer {
 
 	public void keyPressed(int k) {
 		if (k == KeyEvent.VK_LEFT) left = true;
-		if (k == KeyEvent.VK_RIGHT) right = true;	
+		if (k == KeyEvent.VK_RIGHT) {right = true;}	
 		if (k == KeyEvent.VK_UP) isJumping = true;
-	}
+		if (k == KeyEvent.VK_SPACE) {
+			gameState.xOffset = 0;
+			gameState.yOffset = 0;
+			System.out.println("- Level reset");
+		}
+		if (k == KeyEvent.VK_ESCAPE) {
+			System.out.println("- Game quit expectedly, user has ended game");
+			System.exit(0);
+		}
+		}
 
 	public void keyReleased(int k) {
 		if (k == KeyEvent.VK_LEFT) left = false;
@@ -88,3 +97,4 @@ public class gamePlayer {
 
 
 }
+;

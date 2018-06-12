@@ -40,10 +40,10 @@ public class menuState extends gameState {
 			}
 			if (k == KeyEvent.VK_ENTER) {
 				if (selection == 0) {
-					System.out.println("> Game playing...");
+					System.out.println("- Game is playing");
 					gsm.states.push(new lvl1(gsm));
 				} else if (selection == 1) {
-					System.out.println("- Game quit expectedly");
+					System.out.println("- Game quit expectedly, user has ended game");
 					System.exit(0);
 				}
 			}

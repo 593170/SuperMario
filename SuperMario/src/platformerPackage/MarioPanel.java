@@ -23,8 +23,8 @@ public class MarioPanel extends JPanel implements Runnable, KeyListener{
 		isRunning = true;
 		thread = new Thread(this);
 		thread.start();	
-		System.out.println("> Game started successfully");
-		System.out.println("> Game loaded");
+		System.out.println("- Game started successfully");
+		System.out.println("- Game loaded");
 	}
 	public void run() {
 		long start, elapsed, wait;
