@@ -1,7 +1,7 @@
 import java.awt.Graphics;
 import java.util.Stack;
 public class gameStateManager {
-	private Stack<gameState> states;
+	public Stack<gameState> states;
 	public gameStateManager() {
 		states = new Stack<gameState>();
 		states.push(new menuState(this));
