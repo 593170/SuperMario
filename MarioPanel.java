@@ -14,7 +14,7 @@ public class MarioPanel extends JPanel implements Runnable, KeyListener{
 			setFocusable(true);	
 	}
 	private int fps = 60;
-	private long targetTime = 1000 / fps;
+	private long targetTime = 250 / fps;
 	private Thread thread;
 	private boolean isRunning = false;
 	private gameStateManager gsm;
@@ -22,6 +22,8 @@ public class MarioPanel extends JPanel implements Runnable, KeyListener{
 		isRunning = true;
 		thread = new Thread(this);
 		thread.start();	
+		System.out.println("> Game started successfully");
+		System.out.println("> Game loaded");
 	}
 	public void run() {
 		long start, elapsed, wait;
@@ -48,7 +50,11 @@ public class MarioPanel extends JPanel implements Runnable, KeyListener{
 	public void paintComponent(Graphics z) {
 		super.paintComponent(z);
 		z.clearRect(0, 0, WIDTH, HEIGHT);
-		gsm.draw(z);
+		try {
+			gsm.draw(z);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	public void keyPressed(KeyEvent e) {
 		gsm.keyPressed(e.getKeyCode());
@@ -59,6 +65,4 @@ public class MarioPanel extends JPanel implements Runnable, KeyListener{
 	public void keyTyped(KeyEvent e) {
 		
 	}
-	
-	
 }
